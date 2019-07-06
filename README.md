@@ -2,6 +2,8 @@
 
 Script changes [conky](https://github.com/brndnmtthws/conky) position, depending on window positions on the selected workspace. 
 
+This makes conky visible when possible.
+
 [wmctrl](https://github.com/geekless/wmctrl) is required. Tested on xfce4.
 
 ## Install
