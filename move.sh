@@ -52,7 +52,7 @@ elif [[ "$1" == "auto" ]]; then
     # get selected workspace number (0, 1, ...)
     workspace_selected=$(wmctrl -d | grep '*' | cut -d ' ' -f1)
     # get window list
-    readarray -t windows <<< $(wmctrl -l -G)
+    readarray -t windows <<< $( wmctrl -l -G | tr -s ' ' )
     # read config
     readarray -t gap_x_lines <<< $( cat "$SCRIPT_DIR/gap_x" )
     # gap_x to set
@@ -80,7 +80,7 @@ elif [[ "$1" == "auto" ]]; then
         # loop for each window
         for i in "${!windows[@]}"
         do
-            readarray -t -d ' ' window <<< $( echo ${windows[i]} | tr -s ' ' )
+            readarray -t -d ' ' window <<< $( echo ${windows[i]} )
             # if this window from current workspace or pinned to all workspaces
             if [[ ${window[1]} == $workspace_selected ]] || [[ ${window[1]} == '-1' ]]; then
                 win_xprop=$(xprop -id ${window[0]})                
@@ -95,7 +95,7 @@ elif [[ "$1" == "auto" ]]; then
                         # we don't need to move to the position that is already there
                         # skipping this config line
                         same_here="1"
-                        break
+                        continue
                     fi
                 fi
  
@@ -110,17 +110,21 @@ elif [[ "$1" == "auto" ]]; then
                                       
                     if (( $conky_x < $x2 && $conky_x2 > $x && $conky_y < $y2 && $conky_y2 > $y )); then
                         if [[ $DEBUG_ON ]]; then
-                            echo ''               
+                            echo ''
+                            echo 'overlap:'                 
                             echo "'${window[7]}'"
                             echo "x=$x"
                             echo "y=$y"
                             echo "x2=$x2"
                             echo "y2=$y2"
+                            echo ''
                         fi
                         overlap="1"
                         # break window loop
                         break
-                    fi 
+                    fi
+                else
+                    same_here=""
                 fi
             fi
         done
