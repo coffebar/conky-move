@@ -123,8 +123,6 @@ elif [[ "$1" == "auto" ]]; then
                         # break window loop
                         break
                     fi
-                else
-                    same_here=""
                 fi
             fi
         done
