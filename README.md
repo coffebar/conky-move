@@ -4,6 +4,8 @@ Script changes [conky](https://github.com/brndnmtthws/conky) position, depending
 
 This makes conky visible when possible.
 
+![36bhlb](https://user-images.githubusercontent.com/3100053/61719651-03024900-ad6e-11e9-82b4-4f0a36a337c8.gif)
+
 [wmctrl](https://github.com/geekless/wmctrl) is required. Tested on xfce4.
 
 ## Install
