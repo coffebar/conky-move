@@ -13,7 +13,7 @@ This makes conky visible when possible.
 ### 1. Clone this repo or just download file *move.sh*
 ```
 cd $HOME
-git clone git@github.com:Hukuta/conky-move.git
+git clone https://github.com/coffebar/conky-move.git
 ```
 
 ### 2. Specify the desired conky positions
